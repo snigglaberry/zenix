@@ -739,25 +739,23 @@
         </svg>
       </a>
     </div>
-    
-    <div class="stats">
-      <div class="stat-item">
-        <div class="stat-badge">UNC</div>
-        <div class="stat-number" id="sync-stat">0</div>
-        <div class="stat-label">%</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-badge">Members</div>
-        <div class="stat-number" id="members-stat">0</div>
-        <div class="stat-label">Community</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-badge">Keyless</div>
-        <div class="stat-number" id="ranking-stat">#0</div>
-        <div class="stat-label">Ranking</div>
-      </div>
-    </div>
+   <div class="stats">
+  <div class="stat-item">
+    <div class="stat-badge">UNC</div>
+    <div class="stat-number" id="sync-stat">0</div>
+    <div class="stat-label">%</div>
   </div>
+  <div class="stat-item">
+    <div class="stat-badge">Members</div>
+    <div class="stat-number" id="members-stat">0</div>
+    <div class="stat-label">Community</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-badge">Keyless</div>
+    <div class="stat-number" id="ranking-stat">#0</div>
+    <div class="stat-label">Ranking</div>
+  </div>
+</div>
 
   <div class="image-container" id="image-container">
     <img src="/assets/ui.png" alt="Zenix UI" class="responsive-image" id="responsive-image">
@@ -911,53 +909,53 @@
   }
 
   // Number animation for stats - runs for 0.5 seconds then stops
-  function animateNumbers() {
-    const syncStat = document.getElementById('sync-stat');
-    const membersStat = document.getElementById('members-stat');
-    const rankingStat = document.getElementById('ranking-stat');
+function animateNumbers() {
+  const syncStat = document.getElementById('sync-stat');
+  const membersStat = document.getElementById('members-stat');
+  const rankingStat = document.getElementById('ranking-stat');
+  
+  // Target values - FIXED: Changed 'id' to an actual number
+  const syncTarget = 90;
+  const membersTarget = 100; // Changed from 'id' to 100
+  const rankingTarget = 67;
+  
+  // Animation duration in milliseconds
+  const duration = 500;
+  const startTime = Date.now();
+  
+  function updateNumbers() {
+    const elapsed = Date.now() - startTime;
+    const progress = Math.min(elapsed / duration, 1);
     
-    // Target values
-    const syncTarget = 90;
-    const membersTarget = id;
-    const rankingTarget = 67;
+    // Easing function for smooth animation
+    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
     
-    // Animation duration in milliseconds
-    const duration = 500;
-    const startTime = Date.now();
+    // Update sync value
+    const syncValue = Math.floor(easeOut(progress) * syncTarget);
+    syncStat.textContent = syncValue;
     
-    function updateNumbers() {
-      const elapsed = Date.now() - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      
-      // Easing function for smooth animation
-      const easeOut = (t) => 1 - Math.pow(1 - t, 3);
-      
-      // Update sync value
-      const syncValue = Math.floor(easeOut(progress) * syncTarget);
-      syncStat.textContent = syncValue;
-      
-      // Update members value
-      const membersValue = Math.floor(easeOut(progress) * membersTarget);
-      membersStat.textContent = membersValue + 'k';
-      
-      // Update ranking value
-      const rankingValue = Math.floor(easeOut(progress) * rankingTarget);
-      rankingStat.textContent = '#' + rankingValue;
-      
-      // Continue animation if not finished
-      if (progress < 1) {
-        requestAnimationFrame(updateNumbers);
-      } else {
-        // Set final values
-        syncStat.textContent = syncTarget;
-        membersStat.textContent = membersTarget + 'k';
-        rankingStat.textContent = '#' + rankingTarget;
-      }
+    // Update members value
+    const membersValue = Math.floor(easeOut(progress) * membersTarget);
+    membersStat.textContent = membersValue + 'k';
+    
+    // Update ranking value
+    const rankingValue = Math.floor(easeOut(progress) * rankingTarget);
+    rankingStat.textContent = '#' + rankingValue;
+    
+    // Continue animation if not finished
+    if (progress < 1) {
+      requestAnimationFrame(updateNumbers);
+    } else {
+      // Set final values
+      syncStat.textContent = syncTarget;
+      membersStat.textContent = membersTarget + 'k';
+      rankingStat.textContent = '#' + rankingTarget;
     }
-    
-    // Start the animation
-    updateNumbers();
   }
+  
+  // Start the animation
+  updateNumbers();
+}
 
   // Initialize variables
   let mouseX = 0;
@@ -976,5 +974,6 @@
 
 </body>
 </html>
+
 
 
