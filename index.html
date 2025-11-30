@@ -916,8 +916,8 @@ function animateNumbers() {
   
   // Target values - FIXED: Changed 'id' to an actual number
   const syncTarget = 90;
-  const membersTarget = 100; // Changed from 'id' to 100
-  const rankingTarget = 67;
+  const membersTarget = 1000; // Changed from 'id' to 100
+  const rankingTarget = 4;
   
   // Animation duration in milliseconds
   const duration = 500;
@@ -936,7 +936,7 @@ function animateNumbers() {
     
     // Update members value
     const membersValue = Math.floor(easeOut(progress) * membersTarget);
-    membersStat.textContent = membersValue + 'k';
+    membersStat.textContent = membersValue + 't';
     
     // Update ranking value
     const rankingValue = Math.floor(easeOut(progress) * rankingTarget);
@@ -974,6 +974,7 @@ function animateNumbers() {
 
 </body>
 </html>
+
 
 
 
