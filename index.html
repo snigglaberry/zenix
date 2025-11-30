@@ -128,35 +128,13 @@
     }
   }
 
-  /* Logo container */
-  .logo-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
   header img {
-    height: 60px; /* Increased from 45px */
+    height: 45px;
     transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   header.scrolled img {
-    height: 45px; /* Increased from 35px */
-    transform: scale(0.9);
-  }
-
-  .logo-text {
-    font-size: 2.2rem; /* Slightly smaller than the logo */
-    font-weight: 700;
-    background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 0.5px;
-    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  header.scrolled .logo-text {
-    font-size: 1.8rem; /* Scaled down when header is scrolled */
+    height: 35px;
     transform: scale(0.9);
   }
 
@@ -707,22 +685,6 @@
       font-size: 16px;
     }
     
-    .logo-text {
-      font-size: 1.8rem;
-    }
-    
-    header.scrolled .logo-text {
-      font-size: 1.4rem;
-    }
-    
-    header img {
-      height: 50px;
-    }
-    
-    header.scrolled img {
-      height: 40px;
-    }
-    
     .stats {
       gap: 15px;
     }
@@ -751,10 +713,7 @@
 <body>
 
 <header id="navbar">
-  <div class="logo-container">
-    <img src="/assets/logo.png" alt="Zenix Logo">
-    <span class="logo-text">enix</span>
-  </div>
+  <img src="/assets/logo.png" alt="Zenix Logo">
   <nav>
     <a href="#home">Home</a>
     <a href="#api">API</a>
