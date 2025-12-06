@@ -746,9 +746,9 @@
     <div class="stat-label">%</div>
   </div>
   <div class="stat-item">
-    <div class="stat-badge">Members</div>
+    <div class="stat-badge">Version</div>
     <div class="stat-number" id="members-stat">0</div>
-    <div class="stat-label">Community</div>
+    <div class="stat-label">Public</div>
   </div>
   <div class="stat-item">
     <div class="stat-badge">Keyless</div>
@@ -915,8 +915,8 @@ function animateNumbers() {
   const rankingStat = document.getElementById('ranking-stat');
   
   // Target values - FIXED: Changed 'id' to an actual number
-  const syncTarget = 90;
-  const membersTarget = 1000; // Changed from 'id' to 100
+  const syncTarget = 67;
+  const membersTarget = 1.2; // Changed from 'id' to 100
   const rankingTarget = 4;
   
   // Animation duration in milliseconds
@@ -948,7 +948,7 @@ function animateNumbers() {
     } else {
       // Set final values
       syncStat.textContent = syncTarget;
-      membersStat.textContent = membersTarget + 'k';
+      membersStat.textContent = 'v' + membersTarget;
       rankingStat.textContent = '#' + rankingTarget;
     }
   }
@@ -974,6 +974,7 @@ function animateNumbers() {
 
 </body>
 </html>
+
 
 
 
