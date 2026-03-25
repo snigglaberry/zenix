@@ -1,11 +1,29 @@
 export default async function handler(req, res) {
-    const { path } = req.query;
+    try {
+        const { path } = req.query;
 
-    const url = `https://i.ibb.co/${path}`;
-    const response = await fetch(url);
+        if (!path) {
+            return res.status(400).send("missing path");
+        }
 
-    if (!response.ok) return res.status(404).end();
+        const url = `https://i.ibb.co/${path}`;
+        const response = await fetch(url);
 
-    res.setHeader("Content-Type", response.headers.get("content-type"));
-    response.body.pipe(res);
+        if (!response.ok) {
+            return res.status(404).end();
+        }
+
+        const contentType = response.headers.get("content-type") || "image/jpeg";
+
+        // IMPORTANT: convert to buffer (no streaming)
+        const arrayBuffer = await response.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+
+        res.setHeader("Content-Type", contentType);
+        res.send(buffer);
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("server error");
+    }
 }
