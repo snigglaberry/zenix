@@ -1,4 +1,0 @@
-v: 1.04
-* changed the frame work from .net 10 to .net 4.8.1
-* thats basically it
-r: version-eaebe135b3ec446b
